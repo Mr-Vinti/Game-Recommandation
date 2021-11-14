@@ -5,8 +5,8 @@ server:
 
 spring:
   datasource:
-    url: jdbc:sqlserver://event-reporting.database.windows.net:1433;databaseName=EventReporting
-    username: adminER
+    url: jdbc:sqlserver://gamerec.database.windows.net:1433;databaseName=GAMEREC
+    username: adminGR
     password: '!passw0rd'
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     hikari:
@@ -17,7 +17,7 @@ spring:
         useServerPrepStmts: false
       maximum-pool-size: 50
   jpa:
-    database-platform: org.hibernate.dialect.SQLServer2008Dialect
+    database-platform: org.hibernate.dialect.SQLServer2012Dialect
     database: SQL_SERVER
     show-sql: true
     hibernate:

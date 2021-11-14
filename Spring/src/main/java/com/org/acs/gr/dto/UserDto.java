@@ -15,9 +15,5 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
     private String id;
-    private String email;
-    private String firstName;
-    private String lastName;
-    private Integer currentPoints;
-    private Integer totalPoints;
+    private String uuid;
 }

@@ -1,0 +1,52 @@
+<mat-nav-list>
+  <ng-container *ngFor="let item of menu">
+    <ng-container *ngIf="!item.children">
+      <mat-list-item
+        class="{{ item.class }}"
+        [routerLink]="item.route"
+        routerLinkActive="list-item-active"
+      >
+        <div fxLayout="column">
+          <a fxFlex="100%" matLine (click)="sidenav.close()"
+            ><mat-icon matListIcon class="app-nav-list-icon">{{
+              item.icon
+            }}</mat-icon
+            ><span>{{ item.title }}</span></a
+          >
+        </div>
+      </mat-list-item>
+    </ng-container>
+    <ng-container *ngIf="item.children">
+      <mat-list-item
+        class="{{ item.class }}"
+        [routerLink]="item.route"
+        routerLinkActive="list-item-active"
+      >
+        <div fxLayout="column">
+          <a fxFlex="100%" matLine (click)="sidenav.close()"
+            ><mat-icon matListIcon class="app-nav-list-icon">{{
+              item.icon
+            }}</mat-icon
+            ><span>{{ item.title }}</span></a
+          >
+          <mat-nav-list>
+            <ng-container *ngFor="let child of item.children">
+              <mat-list-item
+                [routerLink]="child.route"
+                (click)="$event.stopPropagation()"
+                routerLinkActive="list-item-active"
+              >
+                <a matLine (click)="sidenav.close()"
+                  ><mat-icon matListIcon class="app-nav-list-icon">{{
+                    child.icon
+                  }}</mat-icon
+                  ><span>{{ child.title }}</span></a
+                >
+              </mat-list-item>
+            </ng-container>
+          </mat-nav-list>
+        </div>
+      </mat-list-item>
+    </ng-container>
+  </ng-container>
+</mat-nav-list>

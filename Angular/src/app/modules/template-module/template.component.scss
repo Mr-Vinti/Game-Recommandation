@@ -1,0 +1,19 @@
+// .mat-raised-button {
+//   margin-left: 0px;
+//   margin-right: 0px;
+// }
+
+// .wrapper {
+//   height: calc(100%);
+// }
+.wrapper {
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-size: contain;
+}
+
+@media only screen and (min-width: 960px) {
+  .wrapper {
+      height: calc(100%);
+  }
+}

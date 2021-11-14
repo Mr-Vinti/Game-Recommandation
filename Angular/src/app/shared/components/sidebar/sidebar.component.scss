@@ -1,0 +1,21 @@
+.parent-none {
+  height: 56px !important;
+}
+
+.parent-one {
+  height: 112px !important;
+}
+
+.parent-two {
+  height: 168px !important;
+}
+
+.list-item-active {
+  font-weight: bold;
+  color: mat-color('green', darker) !important;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+mat-list-item a span {
+  vertical-align: super;
+}

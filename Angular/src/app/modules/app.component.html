@@ -1,0 +1,41 @@
+<mat-sidenav-container fxFlexFill class="example-container">
+  <mat-sidenav mode="side" #sidenav>
+    <app-sidebar
+      [sidenav]="sidenav"
+    ></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content fxLayout="column" style="height: 100vh">
+    <mat-toolbar color="primary" fxLayout="row">
+      <button
+        mat-button
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div fxFlex="50%" fxLayoutAlign="start">
+        <a class="title" [routerLink]="['/']" fxFlex>
+          <img src="assets/img/logo.png" class="logo" /> {{ title }}</a
+        >
+      </div>
+      <div fxFlex="50%" fxLayoutAlign="end" fxLayoutGap="2%">
+        <app-theme-picker></app-theme-picker>
+      </div>
+    </mat-toolbar>
+    <main fxFlex>
+      <div *ngIf="isLoading | async" class="loading-indicator">
+        <mat-spinner class="pos-center"></mat-spinner>
+      </div>
+      <div fxFlex>
+        <router-outlet
+          style="text-align: center"
+          *ngIf="!isIframe"
+        ></router-outlet>
+        <div *ngIf="notRouted" class="poster-parent">
+          <div class="main-image"></div>
+        </div>
+      </div>
+    </main>
+    <div fxFlex="10px" fxLayoutAlign="center center" class="footer">
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

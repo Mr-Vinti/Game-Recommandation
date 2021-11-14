@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:remove="all">Template for HTML email (simple)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="#{greeting(${name})}">
+    Hello, Peter Parker!
+</p>
+
+<p>
+    A new natural disaster event has been reported on
+    <span th:text="${#dates.format(currentDate)}">28-12-2021</span>
+</p>
+<p>Event details are:</p>
+<ul>
+    <li th:text="${eventSubcategory}">Subcategory</li>
+    <li th:text="${eventName}">Name</li>
+    <li th:text="${description}">Description</li>
+    <li th:text="${latitude}">Latitude</li>
+    <li th:text="${longitude}">Longitude</li>
+    <li th:text="${startTime}">28-12-2021</li>
+    <li th:text="${endTime}">28-12-2021</li>
+</ul>
+<p>
+    Regards, <br />
+    &emsp; <em>The Event Reporting Team</em>
+</p>
+</body>
+</html>

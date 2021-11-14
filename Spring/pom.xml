@@ -15,7 +15,7 @@
 		<java.version>11</java.version>
 		<webapp.target.dir>${project.build.directory}/generated-webapp</webapp.target.dir>
 	</properties>
-	<artifactId>template-noauth-service</artifactId>
+	<artifactId>gamerec-service</artifactId>
 	<packaging>jar</packaging>
 	<name>carrental: JAR Module</name>
 	<url>http://wildfly.org</url>

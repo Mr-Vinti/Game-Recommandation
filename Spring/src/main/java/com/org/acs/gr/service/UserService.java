@@ -1,10 +1,10 @@
-package com.org.template.service;
+package com.org.acs.gr.service;
 
-import com.org.template.domain.QUser;
-import com.org.template.domain.User;
-import com.org.template.dto.UserDto;
-import com.org.template.repository.UserRepository;
-import com.org.template.util.OptionalBooleanBuilder;
+import com.org.acs.gr.domain.User;
+import com.org.acs.gr.dto.UserDto;
+import com.org.acs.gr.repository.UserRepository;
+import com.org.acs.gr.util.OptionalBooleanBuilder;
+import com.org.acs.gr.domain.QUser;
 import com.querydsl.core.types.Predicate;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;

@@ -1,7 +1,7 @@
-package com.org.template.repository;
+package com.org.acs.gr.repository;
 
-import com.org.template.domain.QUser;
-import com.org.template.domain.User;
+import com.org.acs.gr.domain.User;
+import com.org.acs.gr.domain.QUser;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;

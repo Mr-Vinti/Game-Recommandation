@@ -1,4 +1,4 @@
-package com.org.template.domain;
+package com.org.acs.gr.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.org.template.dto.UserDto;
+import com.org.acs.gr.dto.UserDto;
 
 @Getter
 @Setter

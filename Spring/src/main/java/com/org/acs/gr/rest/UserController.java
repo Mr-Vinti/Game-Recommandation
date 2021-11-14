@@ -1,8 +1,8 @@
-package com.org.template.rest;
+package com.org.acs.gr.rest;
 
-import com.org.template.domain.User;
-import com.org.template.dto.UserDto;
-import com.org.template.service.UserService;
+import com.org.acs.gr.domain.User;
+import com.org.acs.gr.dto.UserDto;
+import com.org.acs.gr.service.UserService;
 import com.querydsl.core.types.Predicate;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

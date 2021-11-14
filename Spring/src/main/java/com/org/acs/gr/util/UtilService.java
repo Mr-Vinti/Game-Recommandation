@@ -1,4 +1,4 @@
-package com.org.template.util;
+package com.org.acs.gr.util;
 
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanOperation;

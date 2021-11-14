@@ -1,4 +1,4 @@
-package com.org.template.util;
+package com.org.acs.gr.util;
 
 import java.util.Collection;
 import java.util.function.Function;

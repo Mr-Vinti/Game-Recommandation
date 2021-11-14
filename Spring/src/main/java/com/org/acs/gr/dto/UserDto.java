@@ -1,4 +1,4 @@
-package com.org.template.dto;
+package com.org.acs.gr.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

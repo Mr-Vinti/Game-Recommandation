@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  baseHref: '/template/',
-  apiResourceUri: 'http://localhost:8080/template/api',
+  baseHref: '/game-rec/',
+  apiResourceUri: 'http://localhost:8080/game-rec/api',
 };

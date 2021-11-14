@@ -6,8 +6,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --aot --baseHref=/template/",
-    "build-dev": "ng build --configuration=dev --source-map --aot --baseHref=/template/",
+    "build": "ng build --prod --aot --baseHref=/game-rec/",
+    "build-dev": "ng build --configuration=dev --source-map --aot --baseHref=/game-rec/",
     "build-prod": "ng build --prod --aot --configuration=production",
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "test-chromium": "ng test --browsers ChromiumHeadless --watch=false",

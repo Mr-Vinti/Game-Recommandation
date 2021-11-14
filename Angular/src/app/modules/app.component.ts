@@ -28,7 +28,7 @@ import {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Template App';
+  title = 'GameRec';
   isIframe: boolean;
   isLoading: Subject<boolean> = this.loadingService.isLoading;
   notRouted = true;

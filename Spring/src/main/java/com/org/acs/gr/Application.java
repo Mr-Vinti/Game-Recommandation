@@ -18,14 +18,18 @@ package com.org.acs.gr;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.org.acs.gr.config.ApplicationProperties;
+
 @SpringBootApplication
 @EnableAsync
+@EnableConfigurationProperties(ApplicationProperties.class)
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

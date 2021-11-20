@@ -39,3 +39,7 @@ spring:
     multipart:
       max-file-size: 20MB
       max-request-size: 20MB
+      
+application:
+  gamespot-url: https://www.gamespot.com/api/
+  gamespot-api-key: b80d38c5b85ff1d323c7c9b4be4cba1adae0b80b 

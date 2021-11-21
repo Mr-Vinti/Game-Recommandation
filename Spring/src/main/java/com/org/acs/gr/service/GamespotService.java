@@ -28,6 +28,7 @@ import lombok.extern.log4j.Log4j2;
 @AllArgsConstructor
 @Log4j2
 public class GamespotService {
+	private final GameService gameService;
 	private final CsvService csvService;
 
 	private List<GamespotGame> getGamespotGames() throws URISyntaxException, IOException, InterruptedException {
@@ -41,7 +42,7 @@ public class GamespotService {
 
 		List<GamespotGame> games = new ArrayList<>();
 
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < numberOfRequestsRounded; i++) {
 			queryParams.clear();
 			Integer offset = i * 100;
 			queryParams.put("offset", offset.toString());
@@ -60,16 +61,21 @@ public class GamespotService {
 			if (StringUtils.isNotBlank(game.getName())
 					&& (StringUtils.isNotBlank(game.getDescription()) || StringUtils.isNotBlank(game.getDeck()))
 					&& !CollectionUtils.isEmpty(game.getGenres()) && game.getImage() != null
-					&& StringUtils.isNotBlank(game.getImage().getOriginal())) {
-				String description = game.getDescription();
-				description = description + (StringUtils.isNotBlank(description) ? ". " : "") + game.getDeck();
+					&& StringUtils.isNotBlank(game.getImage().getOriginal())
+					&& game.getImage().getOriginal().length() < 500
+					&& game.getName().length() < 255) {
+				String description = StringUtils.trim(game.getDescription());
+				if (StringUtils.isNotBlank(game.getDeck())) {
+					description = description + (StringUtils.isNotBlank(description) ? ". " : "")
+							+ StringUtils.trim(game.getDeck());
+				}
 				StringUtils.substring(description, 0, description.length() > 8000 ? 8000 : description.length());
 				List<String> genres = game.getGenres().stream()
-						.filter((genre) -> StringUtils.isNotBlank(genre.getName())).map(GamespotGenre::getName)
-						.collect(Collectors.toList());
+						.filter((genre) -> StringUtils.isNotBlank(genre.getName()))
+						.map(genre -> StringUtils.trim(genre.getName())).collect(Collectors.toList());
 
-				preprocessedGames.add(GameDto.builder().name(game.getName()).description(description)
-						.image(game.getImage().getOriginal()).genres(genres).build());
+				preprocessedGames.add(GameDto.builder().name(StringUtils.trim(game.getName())).description(description)
+						.image(StringUtils.trim(game.getImage().getOriginal())).genres(genres).build());
 			}
 		}
 
@@ -86,7 +92,7 @@ public class GamespotService {
 
 		return orderedGenres;
 	}
-	
+
 	private List<CsvGameBean> convertGameDtosToCsvBeans(List<GameDto> games, List<String> genres) {
 		List<CsvGameBean> csvGames = new ArrayList<>();
 
@@ -103,7 +109,7 @@ public class GamespotService {
 			csvGames.add(CsvGameBean.builder().name(game.getName()).description(game.getDescription())
 					.genres(gameGenres).build());
 		}
-		
+
 		return csvGames;
 	}
 
@@ -113,6 +119,8 @@ public class GamespotService {
 		List<GameDto> preprocessedGames = convertGamespotGamesToDto(games);
 
 		List<String> genres = getSortedGenres(preprocessedGames);
+
+		gameService.saveGames(preprocessedGames, genres);
 
 		List<CsvGameBean> csvGames = convertGameDtosToCsvBeans(preprocessedGames, genres);
 

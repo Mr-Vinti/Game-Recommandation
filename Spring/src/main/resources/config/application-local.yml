@@ -33,6 +33,7 @@ spring:
         enable_lazy_load_no_trans: true
         show_sql: true
         format_sql: true
+        generate_statistics: true
   jta:
     enabled: false
   servlet:

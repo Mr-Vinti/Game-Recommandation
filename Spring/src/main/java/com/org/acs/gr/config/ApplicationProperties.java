@@ -11,6 +11,7 @@ import lombok.Setter;
 public class ApplicationProperties {
 	private static String gamespotUrl;
 	private static String gamespotApiKey;
+	private static String pythonServiceUrl;
 
 
 	public static String getGamespotUrl() {
@@ -27,5 +28,13 @@ public class ApplicationProperties {
 
 	public void setGamespotApiKey(String gamespotApiKey) {
 		ApplicationProperties.gamespotApiKey = gamespotApiKey;
+	}
+	
+	public static String getPythonServiceUrl() {
+		return pythonServiceUrl;
+	}
+
+	public void setPythonServiceUrl(String pythonServiceUrl) {
+		ApplicationProperties.pythonServiceUrl = pythonServiceUrl;
 	}
 }

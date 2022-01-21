@@ -14,6 +14,6 @@ import lombok.Setter;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
-    private String id;
+    private Integer id;
     private String uuid;
 }

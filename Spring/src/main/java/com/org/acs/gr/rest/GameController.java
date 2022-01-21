@@ -2,6 +2,7 @@ package com.org.acs.gr.rest;
 
 import com.org.acs.gr.domain.Game;
 import com.org.acs.gr.dto.GameDto;
+import com.org.acs.gr.dto.GamesDto;
 import com.org.acs.gr.service.GameService;
 import com.querydsl.core.types.Predicate;
 import io.swagger.annotations.Api;
@@ -17,6 +18,8 @@ import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,6 +44,18 @@ public class GameController {
 				pageable.getPageSize());
 
 		return ResponseEntity.ok(gameService.getGamesByPredicate(predicate, pageable));
+	}
+	
+	@ApiOperation("Get Games for user Method")
+	@ApiResponses({ @ApiResponse(code = 200, message = "Successful"),
+			@ApiResponse(code = 400, message = "Malformed request"),
+			@ApiResponse(code = 500, message = "Internal error") })
+	@PostMapping
+	public ResponseEntity<GamesDto> getGames(@RequestBody(required = true) GamesDto games) {
+		log.info("Retrieving games for user with id {} and description {}", games.getUser().getId(),
+				games.getDescription());
+
+		return ResponseEntity.ok(gameService.getGames(games));
 	}
 
 }

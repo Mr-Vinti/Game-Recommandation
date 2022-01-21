@@ -44,14 +44,13 @@ public class UtilService {
 	};
 
 	private static WebClient CLIENT = WebClient.builder().codecs(consumer)
-			.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-			.build();
-	
+			.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).build();
+
 	static public void printRequest(String url, Map<String, String> queryParams) {
 		log.info("==================== REQUEST START ====================");
 
 		log.info(url);
-		
+
 		if (queryParams.size() != 0) {
 			log.info("Displaying Query Parameters list:");
 			for (Entry<String, String> queryParam : queryParams.entrySet()) {
@@ -61,7 +60,7 @@ public class UtilService {
 
 		log.info("===================== REQUEST END =====================");
 	}
-	
+
 	static public GamespotResponse sendGamespotRequest(String method, String url, Map<String, String> queryParams)
 			throws URISyntaxException, IOException, InterruptedException {
 		UriBuilder uriBuilder = new DefaultUriBuilderFactory(ApplicationProperties.getGamespotUrl() + url).builder();
@@ -74,18 +73,18 @@ public class UtilService {
 				uriBuilder = uriBuilder.queryParam(queryParam.getKey(), queryParam.getValue());
 			}
 		}
-		
+
 		RequestHeadersSpec<?> request = CLIENT.method(HttpMethod.valueOf(method)).uri(uriBuilder.build());
 
 		printRequest(ApplicationProperties.getGamespotUrl() + url, queryParams);
-		
+
 		ResponseSpec responseSpec = request.retrieve();
 
 		ResponseEntity<GamespotResponse> response = responseSpec.toEntity(GamespotResponse.class).block();
-		
+
 		return response.getBody();
 	}
-	
+
 	static public GamespotResponse getGamespotResponseBody(ClientResponse response) {
 		return response.bodyToMono(GamespotResponse.class).block();
 	}

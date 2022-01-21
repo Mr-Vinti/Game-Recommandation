@@ -33,7 +33,7 @@ spring:
         enable_lazy_load_no_trans: true
         show_sql: true
         format_sql: true
-        generate_statistics: true
+        generate_statistics: false
   jta:
     enabled: false
   servlet:
@@ -44,3 +44,4 @@ spring:
 application:
   gamespot-url: https://www.gamespot.com/api/
   gamespot-api-key: b80d38c5b85ff1d323c7c9b4be4cba1adae0b80b 
+  python-service-url: http://localhost:4321/

@@ -17,6 +17,7 @@ import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,5 +43,15 @@ public class UserController {
 
 		return ResponseEntity.ok(userService.getUsersByPredicate(predicate, pageable));
 	}
+	
+	@ApiOperation("Get User UUID Method")
+	@ApiResponses({ @ApiResponse(code = 200, message = "Successful"),
+			@ApiResponse(code = 400, message = "Malformed request"),
+			@ApiResponse(code = 500, message = "Internal error") })
+	@PostMapping
+	public ResponseEntity<UserDto> getNewUser() {
+		log.info("Retrieving new user");
 
+		return ResponseEntity.ok(userService.getNewUserId());
+	}
 }

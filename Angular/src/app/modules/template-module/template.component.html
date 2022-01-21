@@ -1,2 +1,114 @@
-<div class="wrapper" fxLayout="row" fxLayoutAlign="center center">
+<div class="wrapper" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card *ngIf="user === null">
+    <mat-card-header>Do you already have an account?</mat-card-header>
+
+    <mat-card-content>
+      If you already have an account, please input your ID in the below input.
+      If you don't have one, just click on new account.
+      <form [formGroup]="form" fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field fxFlex="70%" fxFlex.lt-md="100%">
+          <mat-label>ID</mat-label>
+          <input
+            matInput
+            formControlName="id"
+            placeholder="Enter your ID here"
+          />
+          <mat-error
+            >An ID is required to resume your previous session!</mat-error
+          >
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions
+      fxLayout="row"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="center center"
+      fxLayoutAlign.lt-md="center stretch"
+      fxLayoutGap="20px"
+      fxLayoutGap.lt-md="5px"
+    >
+      <button
+        mat-raised-button
+        fxFlex="50%"
+        color="primary"
+        (click)="submitWithId()"
+      >
+        Resume
+      </button>
+      <button
+        mat-raised-button
+        fxFlex="50%"
+        color="warn"
+        (click)="submitWithoutId()"
+      >
+        New Account
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card *ngIf="user !== null">
+    <mat-card-header
+      >Input a description about a game you liked</mat-card-header
+    >
+    <mat-card-content>
+      <span>
+        Please save the followin ID to be able to resume your session at any
+        time: {{ user.uuid }}
+      </span>
+      <form [formGroup]="formDesc" fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field fxFlex="70%" fxFlex.lt-md="100%">
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            formControlName="description"
+            placeholder="Enter your description here"
+          ></textarea>
+          <mat-error
+            >A description is required to get game suggestions!</mat-error
+          >
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions
+      fxLayout="row"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="center center"
+      fxLayoutAlign.lt-md="center stretch"
+      fxLayoutGap="20px"
+      fxLayoutGap.lt-md="5px"
+    >
+      <button
+        mat-raised-button
+        fxFlex="70%"
+        fxFlex.lt-md="100%"
+        color="primary"
+        (click)="getGameSuggestions()"
+      >
+        Generate suggestions
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card *ngIf="games !== null">
+    <mat-card-header>Game Suggestions</mat-card-header>
+
+    <mat-card-content
+      fxLayout="row wrap"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="30px"
+    >
+      <mat-card fxFlex="calc(30% - 30px)" *ngFor="let game of games">
+        <mat-card-header
+          ><b>{{ game.name }}</b></mat-card-header
+        >
+        <mat-card-content class="game-content">
+          <p class="game-text">Description: {{ game.description }}</p>
+          <p class="game-text">Genres: {{ game.genres.join(', ') }}</p>
+          <img class="image" src="{{ game.image }}" />
+        </mat-card-content>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
 </div>

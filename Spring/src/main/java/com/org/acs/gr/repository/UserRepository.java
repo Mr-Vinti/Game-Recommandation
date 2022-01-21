@@ -3,6 +3,8 @@ package com.org.acs.gr.repository;
 import com.org.acs.gr.domain.User;
 import com.org.acs.gr.domain.QUser;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
@@ -17,4 +19,6 @@ public interface UserRepository extends JpaRepository<User, String>,
 	default void customize(QuerydslBindings bindings, QUser root) {
 	}
 
+	
+	Optional<User> findByUserUuid(String userUuid);
 }

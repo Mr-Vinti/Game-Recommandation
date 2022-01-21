@@ -6,7 +6,7 @@ import { TemplateComponent } from './template.component';
 // Routes
 const moduleRoutes: Routes = [
   {
-    path: 'template',
+    path: 'games',
     component: TemplateComponent,
   },
 ];

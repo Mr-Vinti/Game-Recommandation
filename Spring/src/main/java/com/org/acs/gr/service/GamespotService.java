@@ -16,7 +16,6 @@ import org.springframework.util.CollectionUtils;
 
 import com.org.acs.gr.bean.CsvGameBean;
 import com.org.acs.gr.bean.GamespotGame;
-import com.org.acs.gr.bean.GamespotGenre;
 import com.org.acs.gr.bean.GamespotResponse;
 import com.org.acs.gr.dto.GameDto;
 import com.org.acs.gr.util.UtilService;
@@ -62,8 +61,7 @@ public class GamespotService {
 					&& (StringUtils.isNotBlank(game.getDescription()) || StringUtils.isNotBlank(game.getDeck()))
 					&& !CollectionUtils.isEmpty(game.getGenres()) && game.getImage() != null
 					&& StringUtils.isNotBlank(game.getImage().getOriginal())
-					&& game.getImage().getOriginal().length() < 500
-					&& game.getName().length() < 255) {
+					&& game.getImage().getOriginal().length() < 500 && game.getName().length() < 255) {
 				String description = StringUtils.trim(game.getDescription());
 				if (StringUtils.isNotBlank(game.getDeck())) {
 					description = description + (StringUtils.isNotBlank(description) ? ". " : "")

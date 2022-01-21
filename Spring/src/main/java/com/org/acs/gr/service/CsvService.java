@@ -12,11 +12,9 @@ import org.springframework.stereotype.Service;
 import com.org.acs.gr.bean.CsvGameBean;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 
 @Service
 @AllArgsConstructor
-@Log4j2
 public class CsvService {
 	private final List<String> HEADERS = new ArrayList<>() {
 		private static final long serialVersionUID = 2617271888032890547L;

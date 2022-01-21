@@ -12,9 +12,9 @@ export class SidebarComponent implements OnInit {
 
   public menu = [
     {
-      title: 'Template',
+      title: 'Games',
       route: [ROUTE.TEMPLATE.TEMPLATE.PATH],
-      icon: ['explore'],
+      icon: ['sports_esports'],
       class: 'parent-none',
     },
   ];
